@@ -19,13 +19,18 @@ Install-Module -Name Az.EventHub -Repository PSGallery -Scope CurrentUser
 ## Major Changes:
 
 ### Behavior of -InputObject: 
-With the new release, -InputObject behavior would be changing for a seamless experience. In contrast to earlier use, -InputObject now would support object of corresponding input type as well as resource Id directly to the cmdlet.This would make cmdlet usage fairly easy and faster as compared to the old approach. 
 
-Below example shows the difference in usage for using Input Object for updatng capture window information:
+Until Module X.X.X, -InputObject supports passing an in memory created object to additional cmdlet in pipeline.Due to above design, updating resources becomes a multi step approeach. 
 
-### Old Approach
+With the new module release, -InputObject behavior would be changing for a seamless experience. 
 
-Below example shows old approach of updating capture properties on existing event hub
+In contrast to earlier approach, -InputObject now would support object of corresponding input type as well as resource Id directly to the cmdlet.This would make cmdlet usage fairly easy and faster as compared to the old approach. 
+
+Below example shows the difference in -InputObject Usage: 
+
+### Before
+
+Below example shows how to update capture description on existing event hub with Module version older than X.X.X 
 ```
 $createdEventHub = Get-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyCreatedEventHub
 $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
@@ -40,9 +45,9 @@ $createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/sub
 Set-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -InputObject $createdEventHub
 ```
 
-### New Approach
+### After
 
-Below example shows new approach of updating capture properties in event hub.
+Below example shows how to update capture description on existing event hub with starting with / after Module version  X.X.X 
 
 ```
 $eventhub = Get-AzEventHub -InputObject <ResourceID of event hub>
@@ -52,24 +57,33 @@ Set-AzEventHub -InputObject $eventhub -CaptureEnabled -SizeLimitInBytes 10485763
 
 ```
 
-## Pipelining support
+### Pipelining support
 
-Powershell pipelines can be implemented in the following manner,
+- Accept pipeline Input for InputObject(InputObject pipelining) can be implemented in the following manner:
 
 ```
 Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -MessageRetentionInDays 6
 
 ```
 
+- Accept pipeline input for parameters (parameter pipelining) is not supported
+
+### Positional Binding
+
+- Positional binding is not supported. 
 
 
-## Exceptions
 
-Due to internal design limitations, there are few cmdlets that wouldn't have any changes currently and would continue to work as per the old design. Here is list of cmdlets that are excluded from new design as of today:
-- Set-AzEventHubNamespace, Get-AzEventHubNamespace, New-AzEventHubNamespace, Get-AzEventHubNamespace, New-AzEventHubAuthorizationRuleSASToken have not yet been migrated to Autorest powershell due to technical complexity. These will continue to function as they were.
-- Add-AzEventHubIPRule, Add-AzEventHubVirtualNetworkRule, Remove-AzEventHubIPRule, Remove-AzEventHubVirtualNetworkRule and Remove-AzEventHubNetworkRuleSet would be deprecated in a future release and are hence not being migrated. Reason being that Set-AzEventHubNetworkRuleSet can be used to add or remove multiple Ip or VirtualNetwork rules. Please raise a github issue at https://github.com/Azure/azure-powershell if you want any of the deprecated cmdlets that meet your usecase.
+## Deprecation Announcements
 
+With new release,below cmdlets are marked to be deprecated:
+ - Add-AzEventHubIPRule
+ - Add-AzEventHubVirtualNetworkRule 
+ - Remove-AzEventHubIPRule 
+ - Remove-AzEventHubVirtualNetworkRule 
+ - Remove-AzEventHubNetworkRuleSet 
 
+Use Set-AzEventHubNetworkRuleSet to add/remove IP or virtual network rules.
 
 ## Changes to existing cmdlets
 
@@ -91,7 +105,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Input type of parameter `-InputObject` and Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`.
 - `-ThrottlingPolicyConfig` would be renamed to `-Policy`.
-- `-InputObject` parameter set would have a change in behaviour. Refer the example on top to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### Remove-AzEventHubApplicationGroup
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
@@ -109,7 +123,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Parameter `-VirtualNetworkRule` is changing type from `Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]` to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]`. Please use `New-AzEventHubVirtualNetworkRuleConfig` cmdlet to construct an in-memory object which can then be fed as input to `-VirtualNetworkRule`.
 
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided to `-InputObject` parameter.
-- `-InputObject` parameter set would have a change in behaviour. Refer the example on top to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### Get-AzEventHubNetworkRuleSet
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes` to
@@ -124,7 +138,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ### Set-AzEventHubAuthorizationRule
 - `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
-- `-InputObject` parameter set would have a change in behaviour. Refer the example on top to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### Get-AzEventHubAuthorizationRule
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
@@ -147,12 +161,12 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ### Set-AzEventHubConsumerGroup
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
-- `-InputObject` parameter set would have a change in behaviour. Refer the example on top to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### Get-AzEventHubConsumerGroup
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
-- Parameter `-MaxCount` is not supported and has been removed. `-Skip` and `-Top` would supported for pagination needs.  
+- Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top`  pagination use case.  
 
 ### Remove-AzEventHubConsumerGroup
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
@@ -170,7 +184,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
-- `-InputObject` parameter set would have a change in behaviour. Refer the example on top to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### Get-AzEventHubCluster
 - Output type have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
@@ -183,7 +197,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 
 
 ### Get-AzEventHubClustersAvailableRegion
-- - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.
+ - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.
 PSEventHubsAvailableCluster[]` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster`.
 
@@ -207,7 +221,7 @@ PSEventHubsAvailableCluster[]` to
 ### Get-AzEventHub
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`.
-- Parameter `-MaxCount` is not supported and has been removed. `-Skip` and `-Top` are still supported for pagination needs.  
+- Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top`  for pagination use case.  
 
 - Parameter `-NamespaceObject` is being replaced by `-InputObject` of type `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`.
 
