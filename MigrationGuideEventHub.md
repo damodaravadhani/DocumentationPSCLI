@@ -2,7 +2,7 @@
 
 
 
-The `Az.EventHub` PowerShell module version X.X.X of Azure PowerShell introduces improvised cmdlets for public use.
+The `Az.EventHub` PowerShell module version 9.0.0 of Azure PowerShell that would be released in October introduces improvised cmdlets for public use.
 
 These changes are focused towards making the PowerShell use more productive and seamless for the end users.
 
@@ -20,17 +20,17 @@ Install-Module -Name Az.EventHub -Repository PSGallery -Scope CurrentUser
 
 ### Behavior of -InputObject: 
 
-Until Module X.X.X, -InputObject supports passing an in memory created object to additional cmdlet in pipeline.Due to above design, updating resources becomes a multi step approeach. 
+Until Module 8.3.0, -InputObject supports passing an in memory object to additional cmdlet in pipeline. Due to above design, updating resources becomes a multi step approach. 
 
 With the new module release, -InputObject behavior would be changing for a seamless experience. 
 
-In contrast to earlier approach, -InputObject now would support object of corresponding input type as well as resource Id directly to the cmdlet.This would make cmdlet usage fairly easy and faster as compared to the old approach. 
+In contrast to earlier approach, -InputObject would now support object of corresponding input type as well as resource Id directly to the cmdlet. This would make cmdlet usage fairly easy and faster as compared to the old approach. 
 
 Below example shows the difference in -InputObject Usage: 
 
 ### Before
 
-Below example shows how to update capture description on existing event hub with Module version older than X.X.X 
+Below example shows how to update capture description on existing event hub with Module version 8.3.0 or older
 ```
 $createdEventHub = Get-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyCreatedEventHub
 $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
@@ -47,7 +47,7 @@ Set-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName
 
 ### After
 
-Below example shows how to update capture description on existing event hub with starting with / after Module version  X.X.X 
+Below example shows how to update capture description on existing event hub with starting with / after Module version  9.0.0 
 
 ```
 $eventhub = Get-AzEventHub -InputObject <ResourceID of event hub>
@@ -66,7 +66,7 @@ Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -Messa
 
 ```
 
-- Accept pipeline input for parameters (parameter pipelining) is not supported
+- Property pipelining would be disabled. In other words,  None of the cmdlet parameters apart from `-InputObject` would accept pipeline input. 
 
 ### Positional Binding
 

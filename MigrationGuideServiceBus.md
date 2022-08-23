@@ -2,7 +2,7 @@
 
 
 
-The `Az.ServiceBus` PowerShell module version X.X.X of Azure PowerShell introduces improvised cmdlets for public use.
+The `Az.ServiceBus` PowerShell module version 9.0.0 of Azure PowerShell that would be released in October introduces improvised cmdlets for public use.
 
 These changes are focused towards making the PowerShell use seamless for the end users.
 
@@ -21,48 +21,51 @@ Install-Module -Name Az.ServiceBus -Repository PSGallery -Scope CurrentUser
 
 ### Behavior of -InputObject: 
 
-Until Module X.X.X, -InputObject supports passing an in memory created object to additional cmdlet in pipeline.Due to above design, updating resources becomes a multi step approeach. 
+Until Module 8.3.0, -InputObject supports passing an in memory object to additional cmdlet in pipeline. Due to above design, updating resources becomes a multi step approeach. 
 
-With the new module release, -InputObject behavior would be changing for a seamless experience. 
+With the new module release, -InputObject parameter set would be changing for a seamless experience. 
 
-In contrast to earlier approach, -InputObject now would support object of corresponding input type as well as resource Id directly to the cmdlet.This would make cmdlet usage fairly easy and faster as compared to the old approach. 
+In contrast to earlier approach, -InputObject would now support object of corresponding input type as well as resource Id directly to the cmdlet. This would make cmdlet usage fairly easy and faster as compared to the old approach. 
 
 Below example shows the difference in -InputObject Usage: 
 
 ### Before
 
-Below example shows how to update duplicate detection on existing service bus namespace with Module version older than X.X.X 
+Below example shows how to update queue properties on existing service bus namespace with Module version 8.3.0 or older
 ```
 $QueueObj = Get-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 
-$QueueObj.DeadLetteringOnMessageExpiration = $True
-$QueueObj.SupportOrdering = $True
+$QueueObj.ForwardTo = "q1"
+$QueueObj.ForwardDeadLetteredMessagesTo = "q1"
+$QueueObj.DefaultMessageTimeToLive = "P1YT3H11M2S"
 
-Set-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -QueueObj $QueueObj
+Set-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -InputObject $QueueObj
 ```
 
 ### After
 
-Below example shows how to update capture description on existing event hub with starting with / after Module version  X.X.X 
+Below example shows how to update queue properties starting with / after Module version  9.0.0 
 
 ```
-$eventhub = Get-AzEventHub -InputObject <ResourceID of event hub>
+$queue = Get-AzServiceBusQueue -InputObject <ResourceID of ServiceBus Queue>
 
-Set-AzEventHub -InputObject $eventhub -CaptureEnabled -SizeLimitInBytes 10485763 -IntervalInSeconds 120 -Encoding Avro -DestinationName EventHubArchive.AzureBlockBlob -BlobContainer container -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -StorageAccountResourceId "/subscriptions/{SubscriptionId}/resourceGroups/MyResourceGroupName/providers/Microsoft.ClassicStorage/storageAccounts/teststorage"
+Set-AzServiceBusQueue -InputObject $queue -ForwardTo q1 -ForwardDeadLetteredMessagesTo q2 -DefaultMessageTimeToLive (New-Timespan -Days 365 -Hours 3 -Minutes 11 -Seconds 2)
 
 
 ```
+
+- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Pipelining support
 
-- Accept pipeline Input for InputObject(InputObject pipelining) can be implemented in the following manner:
+- Accept pipeline Input for InputObject (InputObject pipelining) can be implemented in the following manner:
 
 ```
-Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -MessageRetentionInDays 6
+Get-AzServiceBusQueue -InputObject <ResourceId of the queue> | Set-AzServiceBusQueue -MessageRetentionInDays 6
 
 ```
 
-- Accept pipeline input for parameters (parameter pipelining) is not supported
+- Property pipelining would be disabled. In other words,  None of the cmdlet parameters apart from `-InputObject` would accept pipeline input.
 
 ### Positional Binding
 
@@ -106,16 +109,16 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 
 ### New-AzServiceBusAuthorizationRule
 - Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
-  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAuthorizationRule`.
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 
 ### Set-AzServiceBusAuthorizationRule
 - Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
-  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAuthorizationRule`.
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### Get-AzServiceBusAuthorizationRule
 - Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
-  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAuthorizationRule`.
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 
 ### New-AzServiceBusKey
 - Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes` to
@@ -132,6 +135,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue`.
 - `-SizeInBytes` and `-MessageCount` are readonly parameters and are getting removed. 
 - Parameter `-EnableBatchedOperations` is renamed to `-EnableBatchedOperation`.
+- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Set-AzServiceBusQueue
 - Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
@@ -163,9 +167,9 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ### New-AzServiceBusTopic
 - Output type of this cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
-- Parameters `-AutoDeleteOnIdle`, `-DuplicateDetectionHistoryTimeWindow`, `-DefaultMessageTimeToLive` is changing type from System.String to System.Timespan. To set time span to 3 minutes use "00:03:00". To set time span to 5 days, 3 hours use "05:00:03:00". This is not expected to break the cmdlet.
 -  `-SizeInBytes` is readonly parameter and is getting removed. 
 - Parameter `-EnableBatchedOperations` would be renamed to `-EnableBatchedOperation`.
+- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Remove-AzServiceBusTopic
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
@@ -204,11 +208,12 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ### New-AzServiceBusSubscription
 - Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
-
+- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Set-AzServiceBusSubscription
 - Input type of parameter `-InputObject` and Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
+- 
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### Remove-AzServiceBusSubscription
@@ -292,3 +297,9 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties`.
 - Parameter `-ResourceId` is being removed. Henceforth, resource id can be provided as input to `-InputObject`.
+
+## CheckNameAvailability
+
+### Test-AzServiceBusName
+- Output type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult`.
