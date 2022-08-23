@@ -22,7 +22,7 @@ Install-Module -Name Az.EventHub -Repository PSGallery -Scope CurrentUser
 
 Until Module 8.3.0, -InputObject supports passing an in memory object to additional cmdlet in pipeline. Due to above design, updating resources becomes a multi step approach. 
 
-With the new module release, -InputObject behavior would be changing for a seamless experience. 
+With the new module release, -InputObject parameter set would be changing for a seamless experience. 
 
 In contrast to earlier approach, -InputObject would now support object of corresponding input type as well as resource Id directly to the cmdlet. This would make cmdlet usage fairly easy and faster as compared to the old approach. 
 
