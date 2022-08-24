@@ -94,12 +94,15 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 
 ### Get-AzEventHubApplicationGroup
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`.
 
 ### New-AzEventHubApplicationGroup
 
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`.
-- `-ThrottlingPolicyConfig` would be renamed to `-Policy`.
+- `-ThrottlingPolicyConfig` would be renamed to `-Policy` and type would change from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]` to
+  `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]`. New-AzEventHubThrottlingPolicyConfig can still be used to construct this object.
 
 ### Set-AzEventHubApplicationGroup
 - Input type of parameter `-InputObject` and Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
