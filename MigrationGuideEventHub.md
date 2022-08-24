@@ -66,7 +66,7 @@ Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -Messa
 
 ```
 
-- Property pipelining would be disabled. In other words,  none of the cmdlet parameters apart from `-InputObject` would accept pipeline input. 
+- Property pipelining would be disabled. In other words, none of the cmdlet parameters apart from `-InputObject` would accept pipeline input. 
 
 ### Positional Binding
 
@@ -109,7 +109,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`.
 - `-ThrottlingPolicyConfig` would be renamed to `-Policy` and type would change from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]`. New-AzEventHubThrottlingPolicyConfig can still be used to construct this object.
-- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### New-AzEventHubThrottlingPolicyConfig
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes` to
@@ -131,7 +131,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Parameter `-VirtualNetworkRule` is changing type from `Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]` to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]`. Please use `New-AzEventHubVirtualNetworkRuleConfig` cmdlet to construct an in-memory object which can then be fed as input to `-VirtualNetworkRule`.
 
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided to `-InputObject` parameter.
-- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubNetworkRuleSet
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes` to
@@ -146,7 +146,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ### Set-AzEventHubAuthorizationRule
 - `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
-- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubAuthorizationRule
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
@@ -169,7 +169,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ### Set-AzEventHubConsumerGroup
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
-- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubConsumerGroup
 - Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
@@ -192,7 +192,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
-- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
+- `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubCluster
 - Output type have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
