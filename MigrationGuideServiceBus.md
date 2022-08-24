@@ -54,7 +54,7 @@ Set-AzServiceBusQueue -InputObject $queue -ForwardTo q1 -ForwardDeadLetteredMess
 
 ```
 
-- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
+- Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables as shown in the example above. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Pipelining support
 
