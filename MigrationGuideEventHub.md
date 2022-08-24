@@ -59,7 +59,7 @@ Set-AzEventHub -InputObject $eventhub -CaptureEnabled -SizeLimitInBytes 10485763
 
 ### Pipelining support
 
-- Accept pipeline Input for InputObject(InputObject pipelining) can be implemented in the following manner:
+- Accept pipeline Input for InputObject (InputObject pipelining) can be implemented in the following manner:
 
 ```
 Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -MessageRetentionInDays 6
@@ -105,14 +105,14 @@ Below list talks about the changes to existing cmdlets in detailed manner:
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]`. New-AzEventHubThrottlingPolicyConfig can still be used to construct this object.
 
 ### Set-AzEventHubApplicationGroup
-- Input type of parameter `-InputObject` and Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`.
 - `-ThrottlingPolicyConfig` would be renamed to `-Policy` and type would change from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes[]` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]`. New-AzEventHubThrottlingPolicyConfig can still be used to construct this object.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of-InputObject) to know more.
 
 ### New-AzEventHubThrottlingPolicyConfig
-- Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy`.
 
 ### Remove-AzEventHubApplicationGroup
