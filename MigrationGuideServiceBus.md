@@ -21,7 +21,7 @@ Install-Module -Name Az.ServiceBus -Repository PSGallery -Scope CurrentUser
 
 ### Behavior of -InputObject: 
 
-Until Module 8.3.0, -InputObject supports passing an in memory object to additional cmdlet in pipeline. Due to above design, updating resources becomes a multi step approeach. 
+Until Module 8.3.0, -InputObject supports passing an in memory object to additional cmdlet in pipeline. Due to above design, updating resources becomes a multi step approach. 
 
 With the new module release, -InputObject parameter set would be changing for a seamless experience. 
 
