@@ -144,35 +144,35 @@ Below list talks about the changes to existing cmdlets in detailed manner:
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
 
 ### Set-AzEventHubAuthorizationRule
-- `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubAuthorizationRule
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
 
 ### New-AzEventHubKey
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys`.
 
 ### Get-AzEventHubKey
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys`.
 
 ## Consumer Groups
 
 ### New-AzEventHubConsumerGroup
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
 
 ### Set-AzEventHubConsumerGroup
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubConsumerGroup
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top`  pagination use case.  
 
@@ -184,18 +184,18 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ## Clusters
 
 ### New-AzEventHubCluster
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster`.
 - `-ResourceId` would be removed as it is not supported for Creation operation and is available for use after resource is created. 
 
 ### Set-AzEventHubCluster
-- Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
 
 ### Get-AzEventHubCluster
-- Output type have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster`.
 
 ### Remove-AzEventHubCluster
@@ -212,12 +212,12 @@ PSEventHubsAvailableCluster[]` to
 ## EventHub
 
 ### New-AzEventHub
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`.
 - `-InputObject` would be removed as it is not supported for Creation operation and is available for use after resource is created. 
 
 ### Set-AzEventHub
-- Input type of parameter `-InputObject` and output type have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
+- Input type of parameter `-InputObject` and output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`. CaptureDescription class data members would be flattened and would directly be accessible as data members within Microsoft.`Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`. Please refer to example on top to know more.
 
 
@@ -227,7 +227,7 @@ PSEventHubsAvailableCluster[]` to
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### Get-AzEventHub
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top`  for pagination use case.  
 
@@ -236,12 +236,12 @@ PSEventHubsAvailableCluster[]` to
 ## Private Endpoints
 
 ### Approve-AzEventHubPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### Deny-AzEventHubPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
@@ -249,14 +249,14 @@ PSEventHubsAvailableCluster[]` to
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### Get-AzEventHubPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ## Private Links
 
 ### Get-AzEventHubPrivateLink
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes[]` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubPrivateLinkResourceAttributes[]` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult`.
 
 ## Disaster Recovery Configs
@@ -264,12 +264,12 @@ PSEventHubsAvailableCluster[]` to
 ### Get-AzEventHubGeoDRConfiguration
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery`.
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### New-AzEventHubGeoDRConfiguration
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
@@ -287,11 +287,11 @@ PSEventHubsAvailableCluster[]` to
 ## Schema Groups
 
 ### New-AzEventHubSchemaGroup
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubsSchemaRegistryAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubsSchemaRegistryAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup`.
 
 ### Get-AzEventHubSchemaGroup
-- Output type has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubsSchemaRegistryAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubsSchemaRegistryAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 

@@ -90,7 +90,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ## Network Rule Sets
 
 ### Set-AzServiceBusNetworkRuleSet
-- Input type of parameter `-InputObject` and Output type of this cmdlet have been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet`.
 - Parameter `-IPRule` is changing type from `Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes[]` to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules[]`.Please use `New-AzServiceBusIPRuleConfig` cmdlet to construct an in-memory object which can then be fed as input to `-IPRule`.
 
@@ -101,44 +101,44 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### Get-AzServiceBusNetworkRuleSet
-- Input type of parameter `-InputObject` and Output type of this cmdlet have been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet have been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided to `-InputObject` parameter.
 
 ## Authorization Rules and SAS Keys
 
 ### New-AzServiceBusAuthorizationRule
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 
 ### Set-AzServiceBusAuthorizationRule
-- Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### Get-AzServiceBusAuthorizationRule
-- Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 
 ### New-AzServiceBusKey
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys`.
 
 ### Get-AzServiceBusKey
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSListKeysAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys`.
 
 ## Queue Entity
 
 ### New-AzServiceBusQueue
-- Output type of this cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue`.
 - `-SizeInBytes` and `-MessageCount` are readonly parameters and are getting removed. 
 - Parameter `-EnableBatchedOperations` is renamed to `-EnableBatchedOperation`.
 - Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Set-AzServiceBusQueue
-- Input type of parameter `-InputObject` and Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
+- Input type of parameter `-InputObject` and  of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
@@ -155,17 +155,17 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ## Topic Entity
 
 ### Get-AzServiceBusTopic
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top` for pagination use cases.
 
 ### Set-AzServiceBusTopic
-- Input type of parameter `-InputObject` and Output type of this cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### New-AzServiceBusTopic
-- Output type of this cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 -  `-SizeInBytes` is readonly parameter and is getting removed. 
 - Parameter `-EnableBatchedOperations` would be renamed to `-EnableBatchedOperation`.
@@ -179,17 +179,17 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ## Rule Entity
 
 ### Get-AzServiceBusRule
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top` for pagination use cases.
 
 ### Set-AzServiceBusRule
-- Input type of parameter `-InputObject` and Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### New-AzServiceBusRule
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule`.
 - Parameter `-RequiresPreprocessing` is being renamed to `-ActionRequiresPreprocessing`.
 
@@ -201,35 +201,35 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ## Subscription Entity
 
 ### Get-AzServiceBusSubscription
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top` for pagination use cases.
 
 ### New-AzServiceBusSubscription
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
 - Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-LockDuration`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
 
 ### Set-AzServiceBusSubscription
-- Input type of parameter `-InputObject` and Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
 - 
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
 ### Remove-AzServiceBusSubscription
-- Input type of parameter `-InputObject` and Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
+- Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ## Private Endpoints
 
 ### Approve-AzServiceBusPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### Deny-AzServiceBusPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
@@ -237,14 +237,14 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### Get-AzServiceBusPrivateEndpointConnection
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ## Private Links
 
 ### Get-AzServiceBusPrivateLink
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateLinkResourceAttributes[]` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateLinkResourceAttributes[]` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult`.
 
 ## Disaster Recovery Configs
@@ -252,13 +252,13 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ### Get-AzServiceBusGeoDRConfiguration
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery`.
-- Output type of cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery`.
 - `-Name` parameter would be removed from `-InputObject` parameter set. Henceforth,`-InputObject` must  contain the ResourceId  of  Disaster Recovery Configuration alias.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
 
 ### New-AzServiceBusGeoDRConfiguration
-- Output type has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery`.
 -  `-InputObject` and `-ResourceId` are not supported during resource creation, hence are being removed.
 
@@ -286,7 +286,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties`.
 
 ### Start-AzServiceBusMigration
-- Output type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes` to
+- Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties`.
 
 ### Remove-AzServiceBusMigration
@@ -301,5 +301,5 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ## CheckNameAvailability
 
 ### Test-AzServiceBusName
-- Output type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes` to
+- Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult`.
