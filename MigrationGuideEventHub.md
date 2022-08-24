@@ -66,7 +66,7 @@ Get-AzEventHub -InputObject <ResourceId of the eventhub> | Set-AzEventHub -Messa
 
 ```
 
-- Property pipelining would be disabled. In other words,  None of the cmdlet parameters apart from `-InputObject` would accept pipeline input. 
+- Property pipelining would be disabled. In other words,  none of the cmdlet parameters apart from `-InputObject` would accept pipeline input. 
 
 ### Positional Binding
 
