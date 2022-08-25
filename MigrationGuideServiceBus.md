@@ -67,6 +67,8 @@ Get-AzServiceBusQueue -InputObject <ResourceId of the queue> | Set-AzServiceBusQ
 
 - Property pipelining would be disabled. In other words,  None of the cmdlet parameters apart from `-InputObject` would accept pipeline input.
 
+- `-InputObject` parameter would no longer support parameter aliasing.
+
 ### Positional Binding
 
 - Positional binding is not supported. 
