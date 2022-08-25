@@ -286,9 +286,13 @@ PSEventHubsAvailableCluster[]` to
 
 ### Set-AzEventHubGeoDRConfigurationBreakPair
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
+- Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery`.
 
 ### Set-AzEventHubGeoDRConfigurationFailOver
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
+- Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery`.
 
 ## Schema Groups
 

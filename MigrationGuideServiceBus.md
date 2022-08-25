@@ -278,11 +278,16 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 
 ### Set-AzServiceBusGeoDRConfigurationBreakPair
 - Parameter `-ResourceId` is being removed. Henceforth, resource id can be provided as input to `-InputObject`.
+- Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery`.
 
 ### Set-AzServiceBusGeoDRConfigurationFailOver
 - Parameter `-ResourceId` is being removed. Henceforth, resource id can be provided as input to `-InputObject`.
+- Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
+  `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery`.
 
 ## Migration Configurations
+
 ### Complete-AzServiceBusMigration
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties`.
