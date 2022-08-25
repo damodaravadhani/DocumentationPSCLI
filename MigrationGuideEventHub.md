@@ -150,6 +150,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#Behavior-of--InputObject) to know more.
+- `-InputObject` parameter would no longer support alias `-AuthRuleObj`.
 
 ### Get-AzEventHubAuthorizationRule
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessAuthorizationRuleAttributes` to
@@ -222,6 +223,7 @@ PSEventHubsAvailableCluster[]` to
 ### Set-AzEventHub
 - Input type of parameter `-InputObject` and output type of the cmdlet have been changed from `Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`. CaptureDescription class data members would be flattened and would directly be accessible as data members within Microsoft.`Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub`. Please refer to example on top to know more.
+- `-InputObject` parameter would no longer support alias `-EventHubObj`.
 
 
 ### Remove-AzEventHub
