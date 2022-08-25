@@ -162,12 +162,14 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - Parameter `-MaxCount` has been removed. Use `-Skip` and `-Top` for pagination use cases.
+- Parameter `-ResourceGroupName` would no longer support alias `-ResourceGroup`.
 
 ### Set-AzServiceBusTopic
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 - `-InputObject` parameter would no longer support alias `-TopicObj`.
+- Parameter `-ResourceGroupName` would no longer support alias `-ResourceGroup`.
 
 ### New-AzServiceBusTopic
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
@@ -175,11 +177,13 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 -  `-SizeInBytes` is readonly parameter and is getting removed. 
 - Parameter `-EnableBatchedOperations` would be renamed to `-EnableBatchedOperation`.
 - Input type of parameters `-DefaultMessageTimeToLive`, `-AutoDeleteOnIdle`, `-DuplicateDetectionHistoryTimeWindow` has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables. Please refer https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-timespan?view=powershell-7.2 to know more about New-TimeSpan.
+- Parameter `-ResourceGroupName` would no longer support alias `-ResourceGroup`.
 
 ### Remove-AzServiceBusTopic
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - `-ResourceId` parameter would be deprecated. Henceforth, resource id can be provided as input to `-InputObject` parameter.
+- Parameter `-ResourceGroupName` would no longer support alias `-ResourceGroup`.
 
 ## Rule Entity
 

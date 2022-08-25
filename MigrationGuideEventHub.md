@@ -159,6 +159,7 @@ Below list talks about the changes to existing cmdlets in detailed manner:
 ### New-AzEventHubKey
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys`.
+- Parameter `-ResourceGroupName` would no longer support alias `-ResourceGroup`.
 
 ### Get-AzEventHubKey
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes` to
