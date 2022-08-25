@@ -116,6 +116,9 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
 
+### Remove-AzEventHubAuthorizationRule
+- Parameter `-Force` would be removed from the cmdlet.
+
 ### Get-AzServiceBusAuthorizationRule
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
