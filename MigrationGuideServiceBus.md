@@ -117,6 +117,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
+- `-InputObject` parameter would no longer support alias `-AuthRuleObj`.
 
 ### Get-AzServiceBusAuthorizationRule
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes` to
@@ -143,6 +144,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - Input type of parameter `-InputObject` and  of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
+- `-InputObject` parameter would no longer support alias `-QueueObj`.
 
 ### Remove-AzServiceBusQueue
 - Input type of parameter `-InputObject` has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes` to
@@ -165,6 +167,7 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic`.
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
+- `-InputObject` parameter would no longer support alias `-TopicObj`.
 
 ### New-AzServiceBusTopic
 - Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes` to
@@ -215,8 +218,8 @@ Use Set-AzServiceBusNetworkRuleSet to add/remove multiple IP/ virtual network ru
 ### Set-AzServiceBusSubscription
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
   `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription`.
-- 
 - `-InputObject` parameter set would have a change in behaviour. Refer the [section](#behavior-of--inputobject) to know more.
+- `-InputObject` parameter would no longer support alias `-SubscriptionObj`.
 
 ### Remove-AzServiceBusSubscription
 - Input type of parameter `-InputObject` and Output type of the cmdlet has been changed from `Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes` to
